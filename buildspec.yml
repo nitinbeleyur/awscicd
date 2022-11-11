@@ -6,7 +6,6 @@ phases:
       python: 3.9
   pre_build:
     commands:
-      - yum install python37
       - pip install --upgrade pip
       - pip install sagemaker
       - pip install boto3
