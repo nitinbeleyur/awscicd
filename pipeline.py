@@ -1,6 +1,3 @@
-
-!pip install --upgrade sagemaker
-
 import boto3
 import sagemaker
 from sagemaker import get_execution_role
