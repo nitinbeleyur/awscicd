@@ -6,9 +6,7 @@ phases:
       python: 3.9
   pre_build:
     commands:
-      - apt-get install -y python3-venv
-      - python3.9 -m venv test_venv
-      - . test_venv/bin/activate
+      - yum install python37
       - pip install --upgrade pip
       - pip install sagemaker
       - pip install boto3
