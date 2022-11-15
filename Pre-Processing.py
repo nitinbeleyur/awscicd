@@ -88,7 +88,11 @@ if __name__ == "__main__":
     Account_Final['timestamp'] = datetime.datetime.now()
     Account_Final['timestamp'] = Account_Final['timestamp'].apply(lambda x: datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"))
     Account_Final['SegmentTag-timestamp'] = Account_Final['SegmentTag'].astype(str) + Account_Final['timestamp'].astype(str)
+   
+    Header_output_path = os.path.join("s3://cloudthat-cs-bucket/", "Header.csv")
+    pd.DataFrame(Header).to_csv(Header_output_path, header=True, index=False)    
 
+    '''
     #CreditReport_output_path = os.path.join("/opt/ml/processing/CreditReport", "CreditReport.csv")
     Header_output_path = os.path.join("/opt/ml/processing/Header", "Header.csv")
     NameSegment_output_path = os.path.join("/opt/ml/processing/NameSegment", "NameSegment.csv")
@@ -116,5 +120,5 @@ if __name__ == "__main__":
     #pd.DataFrame(Account_Summary_Segment_Fields).to_csv(Account_Summary_Segment_Fields_output_path, header=False, index=False)
     #pd.DataFrame(Account_NonSummary_Segment_Fields).to_csv(Account_NonSummary_Segment_Fields, header=False, index=False)
     pd.DataFrame(Account_Final).to_csv(Account_Final_output_path, header=True, index=False)
-    
+    '''
     #print(move_file())
