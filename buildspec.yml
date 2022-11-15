@@ -10,9 +10,10 @@ phases:
       - pip install sagemaker
       - pip install boto3
       - pip install pandas==1.5.1
+      - pip install lxml
   build:
     commands:
-      - python pipeline.py
+      - python Pre-Processing.py
   post_build:
     commands:
       - echo Build completed on `date`
