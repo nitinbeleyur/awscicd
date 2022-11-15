@@ -11,6 +11,9 @@ phases:
       - pip install boto3
       - pip install pandas==1.5.1
       - pip install lxml
+      - pip install fsspec 
+      - pip install s3fs
+      
   build:
     commands:
       - python Pre-Processing.py
