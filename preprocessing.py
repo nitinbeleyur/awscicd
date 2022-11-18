@@ -20,7 +20,7 @@ ct = datetime.datetime.now()
 def move_file():
     s3 = boto3.resource('s3')
     copy_source = {
-    'Bucket': 'cloudthat-cs-bucket',
+    'Bucket': 'cloudthat-cs-bucke-new',
     'Key': 'CibilFalse.xml'
                   }
     output_file = str(ct)+' - CibilFalse.xml'
@@ -125,4 +125,4 @@ if __name__ == "__main__":
     #pd.DataFrame(Account_NonSummary_Segment_Fields).to_csv(Account_NonSummary_Segment_Fields, header=False, index=False)
     pd.DataFrame(Account_Final).to_csv(Account_Final_output_path, header=True, index=False)
     
-    print(move_file())
+    #print(move_file())
