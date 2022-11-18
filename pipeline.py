@@ -15,7 +15,7 @@ sklearn_processor = SKLearnProcessor(framework_version='1.0-1',
                                      instance_count=1)
 
 
-input_data = "s3://cloudthat-cs-bucket/CibilFalse.xml"
+input_data = "s3://cloudthat-cs-bucke-new/CibilFalse.xml"
 
 
 from sagemaker.processing import ProcessingInput, ProcessingOutput
