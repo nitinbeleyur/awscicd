@@ -25,8 +25,8 @@ client_runtime = boto3.client('sagemaker-featurestore-runtime',region_name='ap-s
 
 
 boto_session = boto3.Session(region_name='ap-south-1')
-sagemaker_client = boto_session.client(service_name='sagemaker', region_name='us-east-2')
-featurestore_runtime = boto_session.client(service_name='sagemaker-featurestore-runtime', region_name='us-east-2')
+sagemaker_client = boto_session.client(service_name='sagemaker', region_name='ap-south-1')
+featurestore_runtime = boto_session.client(service_name='sagemaker-featurestore-runtime', region_name='ap-south-1')
 
 feature_store_session = Session(
     boto_session=boto_session,
@@ -53,7 +53,7 @@ print(f'AccountFinal_table_name: {AccountFinal_table_name}')
 print(f'IDSegment_table_name: {IDSegment_table_name}')
 
 # query athena table
-athena = boto3.client("athena", region_name='us-east-2')
+athena = boto3.client("athena", region_name='ap-south-1')
 
 
 #query_string = f'\nSELECT * FROM sagemaker_featurestore.accountfinal-1669202233;'
