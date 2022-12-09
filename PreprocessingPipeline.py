@@ -19,8 +19,9 @@ sklearn_processor = SKLearnProcessor(framework_version='1.0-1',
                                      instance_type='ml.m5.xlarge',
                                      instance_count=1)
 
-input_data = "s3://cloudthat-cs-bucket/CibilFalse.xml"
-model_path = f"s3://sagemaker-cloudthat-mlosp/model_path"
+#input_data = "s3://cloudthat-cs-bucket/CibilFalse.xml"
+input_data = "cloudthat-cs-bucke-new/CibilFalse.xml"
+model_path = f"s3://cloudthat-cs-bucke-new/model_path"
 
 from sagemaker.processing import ProcessingInput, ProcessingOutput
 from sagemaker.workflow.steps import ProcessingStep
