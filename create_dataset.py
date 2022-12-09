@@ -20,11 +20,11 @@ import sagemaker
 from sagemaker.feature_store.feature_group import FeatureGroup
 from sagemaker.session import Session
 
-client = boto3.client('sagemaker',region_name='us-east-2')
-client_runtime = boto3.client('sagemaker-featurestore-runtime',region_name='us-east-2')
+client = boto3.client('sagemaker',region_name='ap-south-1')
+client_runtime = boto3.client('sagemaker-featurestore-runtime',region_name='ap-south-1')
 
 
-boto_session = boto3.Session(region_name='us-east-2')
+boto_session = boto3.Session(region_name='ap-south-1')
 sagemaker_client = boto_session.client(service_name='sagemaker', region_name='us-east-2')
 featurestore_runtime = boto_session.client(service_name='sagemaker-featurestore-runtime', region_name='us-east-2')
 
@@ -64,7 +64,7 @@ print(query_string)
 
 
 account_query = AccountFinal_feature_group.athena_query()
-account_query.run(query_string=query_string, output_location=f"s3://sagemaker-cloudthat-mlosp/query_results")
+account_query.run(query_string=query_string, output_location=f"s3://cloudthat-cs-bucke-new/query_results")
 account_query.wait()
 dataset = account_query.as_dataframe()
 
