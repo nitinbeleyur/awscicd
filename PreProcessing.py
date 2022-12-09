@@ -21,8 +21,8 @@ from sagemaker.session import Session
 import pandas as pd 
 print("Version",pd.__version__)
 ct = datetime.datetime.now()
-client = boto3.client('sagemaker',region_name='us-east-2')
-client_runtime = boto3.client('sagemaker-featurestore-runtime',region_name='us-east-2')
+client = boto3.client('sagemaker',region_name='ap-south-1')
+client_runtime = boto3.client('sagemaker-featurestore-runtime',region_name='ap-south-1')
 
 def move_file():
     s3 = boto3.resource('s3')
@@ -216,9 +216,9 @@ if __name__ == "__main__":
 
         
         
-        boto_session = boto3.Session(region_name='us-east-2')
-        sagemaker_client = boto_session.client(service_name='sagemaker', region_name='us-east-2')
-        featurestore_runtime = boto_session.client(service_name='sagemaker-featurestore-runtime', region_name='us-east-2')
+        boto_session = boto3.Session(region_name='ap-south-1')
+        sagemaker_client = boto_session.client(service_name='sagemaker', region_name='ap-south-1')
+        featurestore_runtime = boto_session.client(service_name='sagemaker-featurestore-runtime', region_name='ap-south-1')
 
         feature_store_session = Session(
             boto_session=boto_session,
