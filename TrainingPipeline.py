@@ -1,6 +1,4 @@
 
-!pip install --upgrade sagemaker
-
 import boto3
 import sagemaker
 from datetime import datetime
@@ -20,7 +18,7 @@ today = datetime.now()
 dic = {}
 dic_test ={}
 s3 = boto3.resource('s3')
-files = s3.meta.client.list_objects(Bucket='sagemaker-us-east-2-971709774307', Prefix="ProcessingPipeline/")
+files = s3.meta.client.list_objects(Bucket='cloudthat-cs-bucke-new', Prefix="ProcessingPipeline/")
 
 for i in range(len(files['Contents'])):
     Key = files['Contents'][i]['Key']
@@ -35,13 +33,13 @@ for i in range(len(files['Contents'])):
         
 value = sorted(dic.items(), key=lambda x: x[1])
 value_test = sorted(dic_test.items(), key=lambda x: x[1])
-st = "s3://sagemaker-us-east-2-971709774307/"+"{}".format(value[0][0])
-st_test = "s3://sagemaker-us-east-2-971709774307/"+"{}".format(value_test[0][0])
+st = "s3://cloudthat-cs-bucke-new/"+"{}".format(value[0][0])
+st_test = "s3://cloudthat-cs-bucke-new/"+"{}".format(value_test[0][0])
 
 #----------------------------------------------
-model_path = f"s3://sagemaker-us-east-2-971709774307/PipelineTraining/Model"
+model_path = f"s3://cloudthat-cs-bucke-new/PipelineTraining/Model"
 
-bucket = "sagemaker-us-east-2-971709774307"
+bucket = "cloudthat-cs-bucke-new"
 
 from sagemaker.estimator import Estimator
 
@@ -100,41 +98,6 @@ inputs = sagemaker.inputs.CreateModelInput(instance_type="ml.m4.xlarge")
 
 create_model_step = CreateModelStep(name="ModelPreDeployment", model=model, inputs=inputs)
 
-
-
-'''
-bias_data_config = sagemaker.clarify.DataConfig(
-    s3_data_input_path=create_dataset_step.properties.ProcessingOutputConfig.Outputs[
-        "train"
-    ].S3Output.S3Uri,
-    s3_output_path=pipeline_bias_output_path,
-    label="emiamount",
-    dataset_type="text/csv",
-)
-
-bias_config = sagemaker.clarify.BiasConfig(
-    label_values_or_threshold=[0],
-    facet_name="accounttype",
-    facet_values_or_threshold=[1],
-)
-
-analysis_config = bias_data_config.get_config()
-analysis_config.update(bias_config.get_config())
-analysis_config["methods"] = {"pre_training_bias": {"methods": "all"}}
-
-clarify_config_dir = pathlib.Path("config")
-clarify_config_dir.mkdir(exist_ok=True)
-with open(clarify_config_dir / "analysis_config.json", "w") as f:
-    json.dump(analysis_config, f)
-
-s3_client.upload_file(
-    Filename="config/analysis_config.json",
-    Bucket=bucket,
-    Key=f"{prefix}/clarify-config/analysis_config.json",
-)
-
-
-'''
 
 #-----------------------------------------------
 
